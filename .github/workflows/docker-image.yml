@@ -22,4 +22,15 @@ jobs:
       run: mvn clean package -DskipTests
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:${{ github.run_number }}
+      run: |
+          docker version
+          # 登录阿里云镜像仓库
+          docker login --username=${{ secrets.DOCKER_HUB_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }} registry.cn-hangzhou.aliyuncs.com
+          mkdir docker
+          cp ./Dockerfile ./docker
+          cp ./target/*.jar ./docker
+          cd docker
+          # 使用Dockerfile构建镜像
+          docker build . --file Dockerfile --tag ${{ vars.hubAddr }}/${{ vars.IMAGE_NAME }}:${{ vars.tag }}
+          # 推送镜像到镜像仓库
+          docker push ${{ vars.hubAddr }}/${{ vars.IMAGE_NAME }}:${{ vars.tag }}
