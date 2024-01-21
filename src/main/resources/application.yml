@@ -90,6 +90,7 @@ spring:
 blog:
   url: www.我爱玩原神.top
 # 线程池配置
+
 thread:
   pool:
     core-pool-size: 5
