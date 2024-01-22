@@ -100,7 +100,6 @@ thread:
 # 搜索模式 可选 elasticsearch、mysql
 search:
   mode: mysql
-
 # 文件上传策略 local、oss、cos
 upload:
   strategy: qiniu
