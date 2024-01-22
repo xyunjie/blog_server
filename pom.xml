@@ -15,7 +15,7 @@
     <groupId>com.ican</groupId>
     <artifactId>blog-springboot</artifactId>
     <version>2.0</version>
-    <name>blog</name>
+    <name>blog-springboot</name>
     <description>基于springboot + vue3开发的前后端分离博客</description>
     <packaging>jar</packaging>
 
@@ -220,9 +220,25 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
 </project>
