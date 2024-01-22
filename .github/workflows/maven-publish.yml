@@ -44,6 +44,7 @@ jobs:
         cp ./Dockerfile ./docker
         cp ./target/*.jar ./docker
         cd docker
+        ls -ll
         # 使用Dockerfile构建镜像
         docker build . --file Dockerfile --tag ${{ vars.hubAddr }}/${{ vars.IMAGE_NAME }}:${{ vars.tag }}
         # 推送镜像到镜像仓库
