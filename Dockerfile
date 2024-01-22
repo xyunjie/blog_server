@@ -4,7 +4,7 @@ FROM eclipse-temurin:11-jre
 
 LABEL maintainer=jacky
 
-COPY  target/blog-springboot-2.0.jar app.jar
+COPY  blog-springboot-2.0.jar app.jar
 
 EXPOSE 8080
 
